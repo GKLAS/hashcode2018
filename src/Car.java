@@ -12,13 +12,16 @@ class Car {
         rides_id = new ArrayList<>();
     }
 
-    void assign_ride(Ride ride, int current) {
+    void assign_ride(Ride ride, int curtime) {
         this.ride = ride;
-        this.finishing_time = ride.distance + current;
+        this.finishing_time = ride.distance + curtime;
+        this.current=ride.end;
         rides_id.add(ride.id);
     }
     
-    int evaluate_ride(Ride ride) {
+    int evaluate_ride(Ride ride,int curtime) {
+        if(curtime <= finishing_time)
+            return -1;
     	int evaluation = 0;
     	int curr_vs_start = manhattan_distance(current, ride.start);
     	if(curr_vs_start + ride.distance > ride.latest ) {
