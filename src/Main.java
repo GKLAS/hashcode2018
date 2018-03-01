@@ -43,6 +43,10 @@ public class Main {
             }
 
             while (!rides.isEmpty()) {
+                //for each car
+                //  if available
+                //      assign ride
+                //advance time
                 break;
             }
 
