@@ -45,7 +45,7 @@ class Main {
             int best_car = 0;
             int best_score = 0;
             for (int j = 0; j < cars.length; j++) {
-                int score = cars[j].evaluate_ride(ride, T);
+                int score = cars[j].evaluate_ride(ride, T, B);
                 if (score > best_score) {
                     best_car = j;
                     best_score = score;
@@ -54,7 +54,6 @@ class Main {
             if (best_score > 0)
                 cars[best_car].assign_ride(ride);
         }
-
 
         try (PrintWriter writer = new PrintWriter("output/output.txt")) {
             for (Car car : cars) {

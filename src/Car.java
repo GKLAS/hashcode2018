@@ -5,50 +5,43 @@ class Car {
     final List<Integer> rides_id;
     private Intersection current;
     private long finishing_time;
+
     Car() {
-        this.current = new Intersection();
+        current = new Intersection();
         rides_id = new ArrayList<>();
     }
 
     void assign_ride(Ride ride) {
 
-        this.finishing_time += manhattan_distance(ride.start, current);
+        finishing_time += manhattan_distance(current, ride.start);
 
-        if(ride.earliest > this.finishing_time)
-            this.finishing_time = ride.earliest;
+        if (ride.earliest > finishing_time)
+            finishing_time = ride.earliest;
 
-        this.finishing_time += ride.distance ;
+        finishing_time += ride.distance;
 
-        this.current=ride.end;
+        current = ride.end;
         rides_id.add(ride.id);
     }
 
-    int evaluate_ride(Ride ride, long T) {
+    int evaluate_ride(Ride ride, long T, int B) {
 
-    	int evaluation = 0;
-    	if(ride.latest>T)
-    	    return -1;
-    	int curr_vs_start = manhattan_distance(current, ride.start);
+        if (ride.latest > T)
+            return -1;
 
-    	if(curr_vs_start + ride.distance > ride.latest ) {
-    		return -1;
-    	}
+        int curr_vs_start = manhattan_distance(current, ride.start);
 
-    	//poso konta eimaste sthn arxi tou ride
-        int LIMIT = 5;
-        if (curr_vs_start <= LIMIT)
-            evaluation += 2 * LIMIT - curr_vs_start;
+        if (curr_vs_start + ride.distance > ride.latest) {
+            return -1;
+        }
 
-        //oso makryteri diadromi toso kalytera
-        evaluation += ride.distance;
-    
-    	
-    	return evaluation;
+        int evaluation = ride.distance;
+        if (ride.earliest >= finishing_time + curr_vs_start)
+            evaluation += B;
+        return evaluation;
     }
 
     private int manhattan_distance(Intersection start, Intersection end) {
-    	return Math.abs(end.x-start.x) + Math.abs(end.y-start.y);
+        return Math.abs(end.x - start.x) + Math.abs(end.y - start.y);
     }
 }
-
-
