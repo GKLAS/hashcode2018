@@ -31,9 +31,11 @@ class Car {
 
         int distance = manhattan_distance(current, ride.start);
 
-        if (distance + ride.distance > ride.latest) {
+        long arrived = finishing_time + distance;
+        if (ride.earliest > arrived)
+            arrived = ride.earliest;
+        if (arrived + ride.distance > ride.latest)
             return -1;
-        }
 
         int evaluation = ride.distance;
         if (ride.earliest >= finishing_time + distance)
