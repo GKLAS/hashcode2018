@@ -7,13 +7,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        if (args.length != 2) {
+        if (args.length != 1) {
             System.err.println("Expecting argument");
-            System.err.println("Usage: "+args[0]+" <file_name>");
             System.exit(-1);
         }
-        System.out.println("Hello World!");
-        try (Scanner scanner = new Scanner(new File(args[1]))) {
+
+        try (Scanner scanner = new Scanner(new File(args[0]))) {
 
             int R = scanner.nextInt();
             int C = scanner.nextInt();
@@ -22,6 +21,12 @@ public class Main {
             int B = scanner.nextInt();
             long T = scanner.nextLong();
 
+            System.out.println(R);
+            System.out.println(C);
+            System.out.println(F);
+            System.out.println(N);
+            System.out.println(B);
+            System.out.println(T);
         } catch (IOException e) {
             e.printStackTrace();
         }
