@@ -42,13 +42,22 @@ public class Main {
             System.exit(-2);
         }
 
-        while (!rides.isEmpty()) {
-            //for each car
-            //  if available
-            //      assign ride
-            //advance time
-            break;
+        int best_car;
+        int best_score;
+        for (int i = 0; i < rides.size(); i++) {
+            best_car = 0;
+            best_score = 0;
+            for (int j = 0; j < cars.length; j++) {
+                int score = cars[j].evaluate_ride(rides.get(i));
+                if (score > best_score) {
+                    best_car = j;
+                    best_score = score;
+                }
+            }
+            if (best_score > 0)
+                cars[best_car].assign_ride(rides.get(i));
         }
+
 
         try (PrintWriter writer = new PrintWriter("output/output.txt")) {
             for (int i = 0; i < cars.length; i++) {

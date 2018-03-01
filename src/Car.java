@@ -5,21 +5,29 @@ class Car {
 	static final int LIMIT = 5;
     Intersection current;
     Ride ride;
-    int finishing_time;
+    long finishing_time;
     List<Integer> rides_id ;
     Car() {
         this.current = new Intersection();
         rides_id = new ArrayList<>();
     }
 
-    void assign_ride(Ride ride, int curtime) {
+    void assign_ride(Ride ride) {
         this.ride = ride;
-        this.finishing_time = ride.distance + curtime;
+
+        this.finishing_time += manhattan_distance(ride.start,current);
+
+        if(ride.earliest > this.finishing_time)
+            this.finishing_time = ride.earliest;
+
+        this.finishing_time += ride.distance ;
+
         this.current=ride.end;
         rides_id.add(ride.id);
     }
     
     int evaluate_ride(Ride ride) {
+
 
     	int evaluation = 0;
     	int curr_vs_start = manhattan_distance(current, ride.start);
