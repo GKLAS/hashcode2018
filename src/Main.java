@@ -6,6 +6,18 @@ import java.util.Scanner;
 
 public class Main {
 
+    class Intersection {
+        int x;
+        int y;
+    }
+
+    class Ride {
+        Intersection start;
+        Intersection end;
+        int earliest;
+        int latest;
+    }
+
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Expecting argument");
