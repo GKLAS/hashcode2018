@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -31,6 +32,8 @@ public class Main {
             for(int i=0;i<N;i++) {
                 rides[i] = new Ride(scanner);
             }
+
+            Arrays.sort(rides, );
 
         } catch (IOException e) {
             e.printStackTrace();
