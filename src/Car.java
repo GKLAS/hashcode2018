@@ -19,9 +19,8 @@ class Car {
         rides_id.add(ride.id);
     }
     
-    int evaluate_ride(Ride ride,int curtime) {
-        if(curtime <= finishing_time)
-            return -1;
+    int evaluate_ride(Ride ride) {
+
     	int evaluation = 0;
     	int curr_vs_start = manhattan_distance(current, ride.start);
     	if(curr_vs_start + ride.distance > ride.latest ) {
