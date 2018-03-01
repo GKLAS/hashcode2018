@@ -26,6 +26,8 @@ class Car {
     int evaluate_ride(Ride ride, long T) {
 
     	int evaluation = 0;
+    	if(ride.latest>T)
+    	    return -1;
     	int curr_vs_start = manhattan_distance(current, ride.start);
 
     	if(curr_vs_start + ride.distance > ride.latest ) {
