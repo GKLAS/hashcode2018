@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,9 +51,16 @@ public class Main {
                 break;
             }
 
+            PrintWriter writer = new PrintWriter("output/output.txt");
             for (int i = 0; i < F; i++) {
-                System.out.println(i);
+                writer.print(cars[i].rides_id.size());
+                for(int j =0 ; j <cars[i].rides_id.size();j++) {
+                    writer.print(" ");
+                    writer.print(cars[i].rides_id.get(j));
+                }
+                writer.println();
             }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
