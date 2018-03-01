@@ -29,14 +29,14 @@ class Car {
         if (ride.latest > T)
             return -1;
 
-        int curr_vs_start = manhattan_distance(current, ride.start);
+        int distance = manhattan_distance(current, ride.start);
 
-        if (curr_vs_start + ride.distance > ride.latest) {
+        if (distance + ride.distance > ride.latest) {
             return -1;
         }
 
         int evaluation = ride.distance;
-        if (ride.earliest >= finishing_time + curr_vs_start)
+        if (ride.earliest >= finishing_time + distance)
             evaluation += B;
         return evaluation;
     }
