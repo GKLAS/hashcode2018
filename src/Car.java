@@ -25,9 +25,10 @@ class Car {
     		return -1;
     	}
     	
-    	//an eimaste panw sthn arxh tou ride einai poly kalo
-    	if(current.equals(ride.start) || curr_vs_start <= LIMIT)
+    	//poso konta eimaste sthn arxi tou ride
+    	if(curr_vs_start <= LIMIT)
     		evaluation += 2*LIMIT-curr_vs_start;
+    	
     	//oso makryteri diadromi toso kalytera
     	evaluation += ride.distance;
     
