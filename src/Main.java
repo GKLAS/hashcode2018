@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -27,17 +29,26 @@ public class Main {
             System.out.println(B);
             System.out.println(T);
 
-            Ride[] rides = new Ride[N];
+            ArrayList<Ride> rides = new ArrayList<>();
+            rides.ensureCapacity(N);
 
             for (int i = 0; i < N; i++) {
-                rides[i] = new Ride(scanner ,i);
+                rides.add(new Ride(scanner, i));
             }
+            Collections.sort(rides);
+
             Car[] cars = new Car[F];
-            for(int i=0;i<F;i++)
+            for (int i = 0; i < F; i++) {
                 cars[i] = new Car();
+            }
 
-            Arrays.sort(rides);
+            while (!rides.isEmpty()) {
+                break;
+            }
 
+            for (int i = 0; i < F; i++) {
+                System.out.println(i);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
