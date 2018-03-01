@@ -32,8 +32,9 @@ public class Main {
             for(int i=0;i<N;i++) {
                 rides[i] = new Ride(scanner);
             }
+            Car[] car = new Car[F];
 
-            Arrays.sort(rides, );
+            Arrays.sort(rides,lambda);
 
         } catch (IOException e) {
             e.printStackTrace();
