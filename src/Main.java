@@ -29,12 +29,12 @@ public class Main {
 
             Ride[] rides = new Ride[N];
 
-            for(int i=0;i<N;i++) {
+            for (int i = 0; i < N; i++) {
                 rides[i] = new Ride(scanner);
             }
             Car[] car = new Car[F];
 
-            Arrays.sort(rides,lambda);
+            Arrays.sort(rides);
 
         } catch (IOException e) {
             e.printStackTrace();
