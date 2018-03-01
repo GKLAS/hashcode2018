@@ -12,9 +12,9 @@ class Car {
         rides_id = new ArrayList<>();
     }
 
-    int assign_ride(Ride ride, int current) {
+    void assign_ride(Ride ride, int curtime) {
         this.ride = ride;
-        this.finishing_time = ride.distance + current;
+        this.finishing_time = ride.distance + curtime;
         this.current=ride.end;
         rides_id.add(ride.id);
     }
