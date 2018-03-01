@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    class Intersection {
+    static class Intersection {
         int x;
         int y;
 
@@ -16,7 +16,7 @@ public class Main {
         }
     }
 
-     class Ride {
+     static class Ride {
         Intersection start;
         Intersection end;
         long earliest;
