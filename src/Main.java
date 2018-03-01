@@ -1,40 +1,8 @@
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-
-    class Intersection {
-        int x;
-        int y;
-
-        public Intersection(int startX, int startY) {
-            x = startX;
-            y = startY;
-        }
-    }
-
-     class Ride {
-        Intersection start;
-        Intersection end;
-        long earliest;
-        long latest;
-
-        public Ride(Scanner scanner) {
-            int startX = scanner.nextInt();
-            int startY = scanner.nextInt();
-            start = new Intersection(startX,startY);
-
-            int endX = scanner.nextInt();
-            int endY = scanner.nextInt();
-            end = new Intersection(endX,endY);
-
-            earliest = scanner.nextLong();
-            latest = scanner.nextLong();
-        }
-    }
 
     public static void main(String[] args) {
         if (args.length != 1) {
