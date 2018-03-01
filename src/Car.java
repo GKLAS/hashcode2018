@@ -28,19 +28,19 @@ class Car {
     
     int evaluate_ride(Ride ride) {
 
-
     	int evaluation = 0;
     	int curr_vs_start = manhattan_distance(current, ride.start);
+
     	if(curr_vs_start + ride.distance > ride.latest ) {
     		return -1;
     	}
-    	
+
     	//poso konta eimaste sthn arxi tou ride
-    	if(curr_vs_start <= LIMIT)
-    		evaluation += 2*LIMIT-curr_vs_start;
-    	
-    	//oso makryteri diadromi toso kalytera
-    	evaluation += ride.distance;
+        if(curr_vs_start <= LIMIT)
+            evaluation += 2*LIMIT-curr_vs_start;
+
+        //oso makryteri diadromi toso kalytera
+        evaluation += ride.distance;
     
     	
     	return evaluation;

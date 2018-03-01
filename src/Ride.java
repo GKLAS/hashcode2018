@@ -19,7 +19,7 @@ class Ride implements Comparable<Ride> {
 
     @Override
     public int compareTo(Ride o) {
-        return Long.compare(o.earliest, earliest);
+        return Long.compare(earliest, o.earliest);
     }
     
     
