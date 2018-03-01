@@ -21,4 +21,6 @@ class Ride implements Comparable<Ride> {
     public int compareTo(Ride o) {
         return Long.compare(o.earliest, earliest);
     }
+    
+    
 }

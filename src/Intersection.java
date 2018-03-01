@@ -13,4 +13,10 @@ class Intersection {
         x = 0;
         y = 0;
     }
+    
+    boolean equals(Intersection i) {
+    	if(x==i.x && y==i.y)
+    		return true;
+    	return false;
+    }
 }
