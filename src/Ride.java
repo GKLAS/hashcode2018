@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 class Ride implements Comparable<Ride> {
-    Intersection start;
-    Intersection end;
-    long earliest;
-    long latest;
-    int distance;
-    int id;
+    final Intersection start;
+    final Intersection end;
+    final long earliest;
+    final long latest;
+    final int distance;
+    final int id;
 
     Ride(Scanner scanner ,int id) {
         this.id = id;

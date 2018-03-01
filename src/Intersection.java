@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 class Intersection {
-    int x;
-    int y;
+    final int x;
+    final int y;
 
     Intersection(Scanner scanner) {
         x = scanner.nextInt();
@@ -14,9 +14,4 @@ class Intersection {
         y = 0;
     }
     
-    boolean equals(Intersection i) {
-    	if(x==i.x && y==i.y)
-    		return true;
-    	return false;
-    }
 }

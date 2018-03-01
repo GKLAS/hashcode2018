@@ -4,18 +4,18 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.println("Expecting argument");
-            System.exit(-1);
+            return;
         }
 
         long T;
+        Car[] cars;
+        Ride[] rides;
         int R, C, F, N, B;
-        Car[] cars = null;
-        Ride[] rides = null;
 
         try (Scanner scanner = new Scanner(new File(args[0]))) {
             R = scanner.nextInt();
@@ -38,14 +38,14 @@ public class Main {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.exit(-2);
+            return;
         }
 
         for (Ride ride : rides) {
             int best_car = 0;
             int best_score = 0;
             for (int j = 0; j < cars.length; j++) {
-                int score = cars[j].evaluate_ride(ride);
+                int score = cars[j].evaluate_ride(ride, T);
                 if (score > best_score) {
                     best_car = j;
                     best_score = score;
