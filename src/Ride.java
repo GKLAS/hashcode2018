@@ -6,8 +6,10 @@ class Ride implements Comparable<Ride> {
     long earliest;
     long latest;
     int distance;
+    int id;
 
-    Ride(Scanner scanner) {
+    Ride(Scanner scanner ,int id) {
+        this.id = id;
         start = new Intersection(scanner);
         end = new Intersection(scanner);
         earliest = scanner.nextLong();

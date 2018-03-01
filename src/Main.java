@@ -30,9 +30,11 @@ public class Main {
             Ride[] rides = new Ride[N];
 
             for (int i = 0; i < N; i++) {
-                rides[i] = new Ride(scanner);
+                rides[i] = new Ride(scanner ,i);
             }
-            Car[] car = new Car[F];
+            Car[] cars = new Car[F];
+            for(int i=0;i<F;i++)
+                cars[i] = new Car();
 
             Arrays.sort(rides);
 
