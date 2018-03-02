@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 class Intersection {
-    final int x;
-    final int y;
+    private final int x;
+    private final int y;
 
     Intersection(Scanner scanner) {
         x = scanner.nextInt();
@@ -13,5 +13,8 @@ class Intersection {
         x = 0;
         y = 0;
     }
-    
+
+    int manhattan_distance(Intersection b) {
+        return Math.abs(b.x - x) + Math.abs(b.y - y);
+    }
 }

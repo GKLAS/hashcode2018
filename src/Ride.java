@@ -14,7 +14,7 @@ class Ride implements Comparable<Ride> {
         end = new Intersection(scanner);
         earliest = scanner.nextLong();
         latest = scanner.nextLong();
-        distance = Math.abs(end.x - start.x) + Math.abs(end.y - start.y);
+        distance = start.manhattan_distance(end);
     }
 
     @Override

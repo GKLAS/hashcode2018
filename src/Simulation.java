@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Simulation {
-    public static void play(String file) {
+class Simulation {
+    public static int play(String file) {
         long T;
         Car[] cars;
         Ride[] rides;
@@ -20,7 +20,6 @@ public class Simulation {
             T = scanner.nextLong();
 
             rides = new Ride[N];
-
             for (int i = 0; i < N; i++) {
                 rides[i] = new Ride(scanner, i);
             }
@@ -32,38 +31,35 @@ public class Simulation {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return;
+            return 0;
         }
 
-        long total = 0;
+        int total = 0;
         for (Ride ride : rides) {
-            int best_car = 0;
+            Car best_car = null;
             int best_score = 0;
-            for (int j = 0; j < cars.length; j++) {
-                int score = cars[j].evaluate_ride(ride, T, B);
+            for (Car car : cars) {
+                int score = car.evaluate_ride(ride, T, B);
                 if (score > best_score) {
-                    best_car = j;
+                    best_car = car;
                     best_score = score;
                 }
             }
             if (best_score > 0) {
-                cars[best_car].assign_ride(ride);
+                best_car.assign_ride(ride);
                 total += best_score;
             }
         }
 
-        try (PrintWriter writer = new PrintWriter("output/" + file + ".out")) {
+        try (PrintWriter writer = new PrintWriter("outputs/" + file + ".out")) {
             for (Car car : cars) {
-                writer.print(car.rides_id.size());
-                for (Integer id : car.rides_id) {
-                    writer.print(" " + id);
-                }
-                writer.println();
+                writer.println(car);
             }
             writer.close();
-            System.out.println(total);
         } catch (IOException e) {
             e.printStackTrace();
+            return 0;
         }
+        return total;
     }
 }

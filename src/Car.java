@@ -2,18 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Car {
-    final List<Integer> rides_id;
-    private Intersection current;
+    private final List<Integer> rides_id = new ArrayList<>();
+    private Intersection current = new Intersection();
     private long finishing_time;
 
-    Car() {
-        current = new Intersection();
-        rides_id = new ArrayList<>();
-    }
-
     void assign_ride(Ride ride) {
-
-        finishing_time += manhattan_distance(current, ride.start);
+        finishing_time += current.manhattan_distance(ride.start);
 
         if (ride.earliest > finishing_time)
             finishing_time = ride.earliest;
@@ -25,11 +19,10 @@ class Car {
     }
 
     int evaluate_ride(Ride ride, long T, int B) {
-
         if (ride.latest > T)
             return -1;
 
-        int distance = manhattan_distance(current, ride.start);
+        int distance = current.manhattan_distance(ride.start);
 
         long arrived = finishing_time + distance;
         if (ride.earliest > arrived)
@@ -43,7 +36,12 @@ class Car {
         return evaluation;
     }
 
-    private int manhattan_distance(Intersection start, Intersection end) {
-        return Math.abs(end.x - start.x) + Math.abs(end.y - start.y);
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder(String.valueOf(rides_id.size()));
+        for (Integer id : rides_id) {
+            str.append(' ').append(id);
+        }
+        return str.toString();
     }
 }

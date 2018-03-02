@@ -11,8 +11,10 @@ class Main {
     */
     public static void main(String[] args) {
         String[] examples = {"a_example", "b_should_be_easy", "c_no_hurry", "d_metropolis", "e_high_bonus"};
+        int total = 0;
         for (String filename : examples) {
-            Simulation.play(filename);
+            total += Simulation.play(filename);
         }
+        System.out.println(total);
     }
 }
