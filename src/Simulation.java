@@ -23,7 +23,6 @@ class Simulation {
             for (int i = 0; i < N; i++) {
                 rides[i] = new Ride(scanner, i);
             }
-            Arrays.sort(rides);
 
             cars = new Car[F];
             for (int i = 0; i < F; i++) {
@@ -35,6 +34,7 @@ class Simulation {
         }
 
         int total = 0;
+        Arrays.sort(rides);
         for (Ride ride : rides) {
             Car best_car = null;
             int best_score = 0;

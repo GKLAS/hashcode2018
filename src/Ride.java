@@ -17,9 +17,20 @@ class Ride implements Comparable<Ride> {
         distance = start.manhattan_distance(end);
     }
 
+    /*
+        @Override
+        public int compareTo(Ride o) {
+            return Long.compare(earliest, o.earliest);
+        }
+    */
     @Override
     public int compareTo(Ride o) {
-        return Long.compare(earliest, o.earliest);
+        if (earliest == o.earliest)
+            return Integer.compare(o.distance, distance);
+        else if (earliest < o.earliest)
+            return -1;
+        else
+            return 1;
     }
 
 }
