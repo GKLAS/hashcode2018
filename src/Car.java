@@ -3,7 +3,7 @@ import java.util.List;
 
 class Car {
     private final List<Integer> rides_id = new ArrayList<>();
-    private Intersection current = new Intersection();
+    Intersection current = new Intersection();
     private long finishing_time;
 
     void assign_ride(Ride ride) {

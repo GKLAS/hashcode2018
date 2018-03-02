@@ -1,8 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 class Simulation {
     public static int play(String file) {
@@ -46,6 +45,15 @@ class Simulation {
                 }
             }
             if (best_score > 0) {
+                List<Car> best = new ArrayList<>();
+                best.add(best_car);
+                for (Car car : cars) {
+                    if (car != best_car && car.evaluate_ride(ride, T, B) == best_score) {
+                        best.add(car);
+                    }
+                }
+                best.sort(Comparator.comparingInt(o -> ride.start.manhattan_distance(o.current)));
+                best_car = best.get(0);
                 best_car.assign_ride(ride);
                 total += best_score;
             }
