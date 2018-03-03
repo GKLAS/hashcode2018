@@ -14,7 +14,7 @@ class Intersection {
         y = 0;
     }
 
-    int manhattan_distance(Intersection b) {
+    int manhattanDistance(Intersection b) {
         return Math.abs(b.x - x) + Math.abs(b.y - y);
     }
 }

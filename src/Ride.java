@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 class Ride implements Comparable<Ride> {
     final Intersection start;
-    final Intersection end;
+    final Intersection finish;
     final long earliest;
     final long latest;
     final int distance;
@@ -11,17 +11,17 @@ class Ride implements Comparable<Ride> {
     Ride(Scanner scanner, int id) {
         this.id = id;
         start = new Intersection(scanner);
-        end = new Intersection(scanner);
+        finish = new Intersection(scanner);
         earliest = scanner.nextLong();
         latest = scanner.nextLong();
-        distance = start.manhattan_distance(end);
+        distance = start.manhattanDistance(finish);
     }
 
     /*
-        @Override
-        public int compareTo(Ride o) {
-            return Long.compare(earliest, o.earliest);
-        }
+    @Override
+    public int compareTo(Ride o) {
+        return Long.compare(earliest, o.earliest);
+    }
     */
     @Override
     public int compareTo(Ride o) {
