@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 
 class Car {
-    private final List<Ride> rides = new ArrayList<>();
+    private final ArrayList<Ride> rides = new ArrayList<>();
     Intersection location = new Intersection();
     private long busyUntil;
 
@@ -17,23 +16,21 @@ class Car {
     }
 
     boolean canMakeIt(Ride ride) {
-        int distance = location.manhattanDistance(ride.start);
-        long arrived = busyUntil + distance;
+        long arrived = busyUntil + location.manhattanDistance(ride.start);
         if (ride.earliest > arrived)
             arrived = ride.earliest;
         return arrived + ride.distance <= ride.latest;
     }
 
     boolean onTime(Ride ride) {
-        int distance = location.manhattanDistance(ride.start);
-        return ride.earliest >= busyUntil + distance;
+        return ride.earliest >= busyUntil + location.manhattanDistance(ride.start);
     }
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder(String.valueOf(rides.size()));
         for (Ride ride : rides) {
-            str.append(' ').append(ride.id);
+            str.append(' ').append(ride);
         }
         return str.toString();
     }

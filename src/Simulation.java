@@ -1,13 +1,13 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 abstract class Simulation {
+    final ArrayList<Car> cars = new ArrayList<>();
+    final ArrayList<Ride> rides = new ArrayList<>();
     int b;
-    Car[] cars;
-    Ride[] rides;
 
     abstract int simulate();
 
@@ -20,20 +20,17 @@ abstract class Simulation {
             b = scanner.nextInt();
             long t = scanner.nextLong();
 
-            rides = new Ride[n];
-            int x = 0;
+            rides.clear();
             for (int i = 0; i < n; i++) {
                 Ride ride = new Ride(scanner, i);
-                if (ride.latest <= t) {
-                    rides[x] = ride;
-                    x++;
+                if (ride.isValid(t)) {
+                    rides.add(ride);
                 }
             }
-            rides = Arrays.copyOfRange(rides, 0, x);
 
-            cars = new Car[f];
+            cars.clear();
             for (int i = 0; i < f; i++) {
-                cars[i] = new Car();
+                cars.add(new Car());
             }
         } catch (IOException e) {
             e.printStackTrace();

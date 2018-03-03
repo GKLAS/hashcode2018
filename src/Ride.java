@@ -6,7 +6,7 @@ class Ride implements Comparable<Ride> {
     final long earliest;
     final long latest;
     final int distance;
-    final int id;
+    private final int id;
 
     Ride(Scanner scanner, int id) {
         this.id = id;
@@ -15,6 +15,10 @@ class Ride implements Comparable<Ride> {
         earliest = scanner.nextLong();
         latest = scanner.nextLong();
         distance = start.manhattanDistance(finish);
+    }
+
+    public boolean isValid(long t) {
+        return latest <= t && earliest + distance <= latest;
     }
 
     /*
@@ -33,4 +37,8 @@ class Ride implements Comparable<Ride> {
             return 1;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
 }
