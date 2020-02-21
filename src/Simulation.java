@@ -42,9 +42,15 @@ abstract class Simulation {
             for (Car car : cars) {
                 writer.println(car);
             }
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int run(String input, String output) {
+        read(input);
+        int total = simulate();
+        write(output);
+        return total;
     }
 }
